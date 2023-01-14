@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Knockout Demo</title>
+    <script type="text/javascript" src="lib/knockout-3.5.1.js"></script>
+  </head>
+  <body>
+    <!-- This is the View (UI)-->
+    FirstName :
+    <input
+      type="text"
+      name="txtFirstName"
+      data-bind="value:FirstName"
+    /><br /><br />
+    LastName:
+    <input type="text" name="txtLastName" data-bind="value:LastName" /><br />
+
+    <h2>Hello <span data-bind="text:FullName"></span></h2>
+
+    <!-- This is the View Model -->
+    <script>
+      let nameViewModel = function (fname, lname) {
+        this.FirstName = ko.observable(fname);
+        this.LastName = ko.observable(lname);
+
+        this.FullName = ko.computed(function () {
+          return this.FirstName() + " " + this.LastName();
+        }, this);
+      };
+
+      //This view & view model are bound together
+      ko.applyBindings(new nameViewModel("Biswajit", "Sundara"));
+    </script>
+  </body>
+</html>

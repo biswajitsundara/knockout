@@ -1,0 +1,37 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="scripts/knockout-3.5.1.js"></script>
+</head>
+
+<body>
+    <strong>Billing Address</strong>
+    <div data-bind="template: {name:'address-template', data:billingAddress}"></div><br />
+    <strong>Shipping Address</strong>
+    <div data-bind="template: {name:'address-template', data:shippingAddress}"></div>
+    
+   
+
+    <script id="address-template" type="text/html">
+        <span data-bind="text: line1"></span><br />
+        <span data-bind="text: line2"></span><br />
+        <span data-bind="text: postcode"></span><br />
+    </script>
+
+    <script>
+        function AppViewModel() {
+            this.billingAddress = ko.observable({line1: '42 Planet Earth', line2: 'Orion Branch', postcode: 'N2 O2AR' });
+            this.shippingAddress = ko.observable({line1: '1976 Mars', line2: 'Orion Branch', postcode: 'CO2 N2AR ' });
+            }
+            ko.applyBindings(new AppViewModel());
+    </script>
+    
+</body>
+
+</html>

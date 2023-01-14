@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Two Way DataBinding </title>
+    <script type="text/javascript" src="scripts/knockout-3.5.1.js"></script>
+</head>
+
+<body>
+    <ul data-bind="foreach: fruits">
+        <li>
+            <span data-bind="text: $data"></span>
+            <button data-bind="click: $parent.removeFruits">Remove Fruit</button>
+        </li>
+    </ul>
+     
+     <script type="text/javascript">
+         function FruitModel() {
+             var self = this;
+             self.fruits = ko.observableArray(['Apple', 'Orange', 'Banana', 'Guava', 'Peach']);
+     
+             // The current item will be passed as the first parameter, so we know which place to remove
+             self.removeFruits = function(fruit) {
+                 self.fruits.remove(fruit)
+             }
+         }
+         ko.applyBindings(new FruitModel());
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .warningMessage {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+    <script type="text/javascript" src="scripts/knockout-3.5.1.js"></script>
+</head>
+
+<body>
+    <div data-bind="css: { warningMessage: studentAge() <= 0 }">
+        Age Should be Greater Than 0.
+    </div>
+
+    <script>
+        function StudentViewModel() {
+            this.studentAge = ko.observable(10);
+        }
+        ko.applyBindings(new StudentViewModel());
+    </script>
+</body>
+
+</html>
